@@ -1,0 +1,530 @@
+body {
+    font-family: Monaco;
+    text-align: center;
+    background-color: #2084c3;
+    margin: 0;
+    padding: 20px;
+}
+
+.audio-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+audio {
+    width: 250px;
+}
+
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .audio-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+img {
+    height: 300px;
+    width: 300px;
+}
+
+.player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.player {
+    /* width: 400px; */
+    background-color: rgb(255, 255, 255); 
+    border-radius: 15px; 
+    padding: 20px;
+    padding-left: 465px;
+    padding-right: 465px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .player {
+        padding-left: 20px;
+        padding-right: 20px;
+        width: 100%;
+        box-shadow: none;
+    }
+}
+
+.player img {
+    width: 100%;
+    max-width: 300px; /* Ensures the image doesn't stretch too much */
+    height: auto; /* Maintains aspect ratio */
+    border-radius: 10px;
+}
+
+
+#progress {
+    width: 100%;
+    height: 4px;       
+    background: #ccc;
+    border-radius: 5px;      
+    outline: none;
+}
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds spacing between the text and slider */
+    white-space: nowrap; /* Prevents line breaks */
+    font-size: 12px;
+}
+
+
+button {
+    background-color: #007bff;
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 10px;
+}
+
+#play {
+    border-radius: 50%;        
+    padding: 15px 20px;   
+}
+
+button:not(#play) {
+    border-radius: 0;     
+    padding: 10px 15px;       
+    background-color: #007bff; 
+}
+
+button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+}
+
+button:active {
+    background-color: #003f7f;
+    transform: scale(1);
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
+#volume {
+    width: 100%;             
+    height: 4px;             
+    background: #ccc;         
+    border-radius: 5px;      
+    outline: none;           
+    margin-top: 10px;          
+}
+
+/* Styling the thumb (the draggable part) */
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+
+#volume::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.fa-volume-up {
+    font-size: 24px;
+    color: #007bff;
+}
+
+.title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+#songListButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 2px 5px; 
+    font-size: 12px;  
+    border-radius: 3px; 
+    width: 14px; 
+    height: 14px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    width: 250px;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 10;
+    
+}
+
+.dropdown-content button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+/* .dropdown-content button:hover {
+    background-color: #007bff;
+    color: white;
+} */
+
+#dropdown-content:hover {
+    background-color: #0056b3;
+}
+
+#songListButton:hover {
+    background-color: #0056b3;
+}
+
+/* Unmuted icon jajaja */
+
+.fa-volume-up, .fa-volume-mute {
+    font-size: 24px; /* Ensure both icons are the same size */
+    color: #007bff; /* Blue color for both icons */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+
+.controls-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px; 
+    margin-top: 10px;
+}
+
+.controls-container button {
+    padding: 8px 12px;
+    font-size: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.controls-container button:hover {
+    background-color: #0056b3;
+}
+.controls-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px; 
+    margin-top: 10px;
+}
+
+.controls-container2 button {
+    padding: 8px 12px;
+    font-size: 9.5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#decrease-velocity:hover, #rewind-5:hover, #decrease-volume:hover, 
+#increase-velocity:hover, #forward-5:hover, #increase-volume:hover {
+    background-color: #0056b3;  
+}
+
+#song-time, #actual-time {
+    font-size: 13px;
+}
+
+/* =========================================================================================== */
+
+/* Header Navigation */
+header {
+    background-color: #013d7d;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Footer Section */
+footer {
+    background-color: #013d7d;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    /* position: fixed; */
+    bottom: 0;
+    width: 100%;
+    border-radius: 10px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 100%; 
+    margin: 0 auto; 
+    box-sizing: border-box; 
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Gallery Section */
+.gallery-container {
+    background-color: rgb(255, 255, 255);
+    border-radius: 15px; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    max-width: 80%;
+    margin: 40px auto; 
+}
+
+
+.gallery {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 250px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Videos Section */
+.videos-container {
+    background-color: rgb(255, 255, 255); 
+    border-radius: 15px; 
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    text-align: center; 
+    margin: 40px auto; 
+    max-width: 80%; 
+}
+
+.videos {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping of items */
+    gap: 20px;
+    justify-content: center;
+}
+
+.videos video {
+    width: calc(50% - 10px);
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Fullscreen landscape mode */
+.fullscreen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    background: black;
+    z-index: 9999;
+    transform: rotate(90deg); /* Rotates to landscape */
+}
+
+@media (max-width: 768px) {
+    .fullscreen-video {
+        transform: rotate(0deg); /* Keep normal for mobile portrait */
+    }
+}
+
+
+/* Adjust for smaller screens (optional) */
+@media (max-width: 768px) {
+    .videos video {
+        width: 100%; /* Make videos full width on smaller screens */
+    }
+}
+
+
+
+/* Contact Section */
+.contact-container {
+    margin: 40px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.contact-container input, .contact-container textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.contact-container button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contact-container button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Gallery container */
+.gallery-container {
+    margin: 40px auto;
+    text-align: center;
+    width: 80%;
+}
+
+.carousel {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Hide overflow to create the slide effect */
+    border-radius: 10px;
+    width: 100%;
+    max-width: 600px; /* Set the max width of the carousel */
+    margin: 0 auto;
+}
+
+/* Style the carousel images container */
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease; /* Smooth slide effect */
+}
+
+/* Style for each image */
+.carousel-item {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+
+
+/* Navigation buttons */
+.prev-btn, .next-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    font-size: 24px;
+    border: none;
+    padding: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50%;
+}
+
+.prev-btn {
+    left: 10px;
+}
+
+.next-btn {
+    right: 10px;
+}
+
+/* Hover effect for buttons */
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+

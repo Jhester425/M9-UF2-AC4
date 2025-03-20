@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quokka</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#player">Music Player</a></li>
+                <li><a href="#gallery">Photo Gallery</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div id="player" class="player-container">
+        <div class="player">
+            <h2>Music Player</h2>
+            <img id="cover" src="images/bg.jpg" alt="Cover">
+            <div class="title-container">
+                <h3 id="title">My Heart</h3>
+                <button id="songListButton">▼</button>
+                <div id="songList" class="dropdown-content"></div>
+            </div>
+            <audio id="audio" src="audio/song1.mp3"></audio>
+            <div class="progress-container">
+                <span id="progress-time">0:00 / 0:00</span>
+                <input type="range" id="progress" value="0">
+            </div>
+            <div class="controls">
+                <button id="prev">⏮</button>
+                <button id="play">▶</button>
+                <button id="next">⏭</button>
+            </div>
+            <div class="controls-container">
+                <button id="decrease-velocity">Velocity -</button>
+                <button id="rewind-5">Seconds -5</button>
+                <button id="decrease-volume">Volume -</button>
+            </div>
+            <div class="controls-container2">
+                <button id="increase-velocity">Velocity +</button>
+                <button id="forward-5">Seconds +5</button>
+                <button id="increase-volume">Volume +</button>
+            </div>
+            <div class="volume-container">
+                <i class="fas fa-volume-up"></i>
+                <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+            </div>
+            <p id="song-time">Song time: 0:00</p>
+            <p id="actual-time">Actual time (global): 0:00</p>
+        </div>
+    </div>
+
+    <!-- Photo Gallery Section -->
+    <div id="gallery" class="gallery-container">
+        <h2>Image Gallery</h2>
+        <div class="carousel">
+            <button class="prev-btn" onclick="moveSlide(-1)">&#10094;</button>
+            
+            <div class="carousel-images">
+                
+                <img class="carousel-item" src="images/1.svg" alt="Image 1">
+                <img class="carousel-item" src="images/2.png" alt="Image 2">
+                <img class="carousel-item" src="images/3.jpg" alt="Image 3">
+                <img class="carousel-item" src="images/4.svg" alt="Image 4">
+                <img class="carousel-item" src="images/5.png" alt="Image 5">
+                <img class="carousel-item" src="images/6.jpg" alt="Image 6">
+                <img class="carousel-item" src="images/7.svg" alt="Image 7">
+                <img class="carousel-item" src="images/8.png" alt="Image 8">
+                <!-- Add more images here -->
+            </div>
+            
+            <button class="next-btn" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </div>
+    
+
+    <!-- Videos Section -->
+    <div id="videos" class="videos-container">
+        <h2>Videos</h2>
+        <div class="videos">
+            <video width="300" controls>
+                <source src="videos/1.mp4" type="video/mp4">
+            </video>
+            <video width="300" controls>
+                <source src="videos/2.mp4" type="video/mp4">
+            </video>
+            <video width="300" controls>
+                <source src="videos/3.mp4" type="video/mp4">
+            </video>
+            <video width="300" controls>
+                <source src="videos/4.mp4" type="video/mp4">
+            </video>
+            
+        </div>
+    </div>
+
+    <!-- Contact Form Section -->
+    <div id="contact" class="contact-container">
+        <h2>Contact Us</h2>
+        <form id="contactForm">
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br><br>
+            
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" required></textarea><br><br>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; Jhester M9</p>
+    </footer>
+</body>
+</html>
